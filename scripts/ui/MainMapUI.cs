@@ -27,6 +27,11 @@ public partial class MainMapUI : Control
         GetNode<Button>("CreateDialog/ConfirmCreate").Pressed += OnConfirmCreate;
         GetNode<Button>("CreateDialog/CancelCreate").Pressed += () => _createDialog.Hide();
 
+        GetNode<Button>("BottomNav/NavButtons/ShopBtn").Pressed += () =>
+            GetTree().ChangeSceneToFile("res://scenes/shop.tscn");
+        GetNode<Button>("BottomNav/NavButtons/InventoryBtn").Pressed += () =>
+            GetTree().ChangeSceneToFile("res://scenes/inventory.tscn");
+
         Refresh();
     }
 

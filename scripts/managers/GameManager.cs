@@ -22,6 +22,7 @@ public partial class GameManager : Node
 		var economy = GetNode<EconomyManager>("/root/EconomyManager");
 		var saveManager = GetNode<SaveManager>("/root/SaveManager");
 		var pondManager = GetNode<PondManager>("/root/PondManager");
+		var inventory = GetNode<InventoryManager>("/root/InventoryManager");
 
 		var saveData = saveManager.LoadGame();
 		if (saveData != null)
@@ -32,6 +33,8 @@ public partial class GameManager : Node
 			var pondsArray = (Array)saveData["ponds"];
 			foreach (var pondDict in pondsArray)
 				pondManager.RestorePond((Dictionary)pondDict);
+
+			inventory.FromDict((Dictionary)saveData["inventory"]);
 
 			GD.Print($"[GameManager] Save restored. Coins: {economy.Coins}, Ponds: {pondManager.PondCount}");
 		}

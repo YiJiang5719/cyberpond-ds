@@ -21,6 +21,7 @@ GameManager="*res://scripts/managers/GameManager.cs"
 SaveManager="*res://scripts/managers/SaveManager.cs"
 EconomyManager="*res://scripts/managers/EconomyManager.cs"
 PondManager="*res://scripts/managers/PondManager.cs"
+InventoryManager="*res://scripts/managers/InventoryManager.cs"
 
 [dotnet]
 

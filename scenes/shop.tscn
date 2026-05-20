@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://shopmain01"]
+
+[ext_resource type="Script" uid="uid://cyg5ijqhva0ql" path="res://scripts/ui/ShopUI.cs" id="1_script"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89, 0.95, 0.99, 1)
+
+[node name="CoinsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 400.0
+offset_bottom = 76.0
+text = "Coins: 0"
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 84.0
+offset_right = 400.0
+offset_bottom = 116.0
+text = "Fish Shop"
+
+[node name="FishScroll" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 124.0
+offset_right = 400.0
+offset_bottom = 424.0
+
+[node name="FishList" type="VBoxContainer" parent="FishScroll"]
+layout_mode = 2
+
+[node name="BottomNav" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_bottom = 1.0
+anchor_left = 0.0
+anchor_right = 1.0
+offset_top = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 1)
+
+[node name="NavButtons" type="HBoxContainer" parent="BottomNav"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapBtn" type="Button" parent="BottomNav/NavButtons"]
+layout_mode = 2
+text = "Map"
+size_flags_horizontal = 3
+
+[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons"]
+layout_mode = 2
+text = "Shop"
+size_flags_horizontal = 3
+
+[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons"]
+layout_mode = 2
+text = "Inventory"
+size_flags_horizontal = 3

@@ -19,13 +19,7 @@ public partial class SaveManager : Node
 		{
 			{ "player", new Dictionary { { "coins", GetNode<EconomyManager>("/root/EconomyManager").Coins } } },
 			{ "ponds", pondsArray },
-			{ "inventory", new Dictionary
-				{
-					{ "unlocked_slots", 10 },
-					{ "fry", new Dictionary() },
-					{ "roe", new Dictionary() }
-				}
-			}
+			{ "inventory", GetNode<InventoryManager>("/root/InventoryManager").ToDict() }
 		};
 		return data;
 	}
