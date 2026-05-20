@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="CyberPond"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+run/main_scene="res://scenes/main_map.tscn"
+config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
-run/main_scene="res://node_2d_root.tscn"
+
+[autoload]
+
+GameManager="*res://scripts/managers/GameManager.cs"
+SaveManager="*res://scripts/managers/SaveManager.cs"
+EconomyManager="*res://scripts/managers/EconomyManager.cs"
+PondManager="*res://scripts/managers/PondManager.cs"
 
 [dotnet]
 
@@ -22,12 +29,6 @@ project/assembly_name="CyberPond"
 [physics]
 
 3d/physics_engine="Jolt Physics"
-
-[autoload]
-
-GameManager="*res://scripts/managers/GameManager.cs"
-SaveManager="*res://scripts/managers/SaveManager.cs"
-EconomyManager="*res://scripts/managers/EconomyManager.cs"
 
 [rendering]
 

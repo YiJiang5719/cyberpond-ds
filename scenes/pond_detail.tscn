@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cb6skxqj1pg2v"]
+
+[ext_resource type="Script" uid="uid://c12qok5s0ljup" path="res://scripts/ui/PondDetailUI.cs" id="1_script"]
+
+[node name="PondDetail" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89, 0.95, 0.99, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 400.0
+offset_bottom = 84.0
+text = "Pond Name"
+
+[node name="FishCountLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 400.0
+offset_bottom = 112.0
+text = "Fish: 0 / 3"
+
+[node name="FishScroll" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 120.0
+offset_right = 400.0
+offset_bottom = 440.0
+
+[node name="FishList" type="VBoxContainer" parent="FishScroll"]
+layout_mode = 2
+
+[node name="EmptyHint" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -16.0
+offset_right = 80.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No fish in this pond"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 450.0
+offset_right = 400.0
+offset_bottom = 490.0
+text = "Back"
