@@ -1,0 +1,9 @@
+{
+  "available_fish": ["common_carp", "goldfish", "koi", "arowana"],
+
+  "buy_price_multiplier": 1.0,
+  "sell_price_multiplier": 1.0,
+
+  "_comment_buy": "鱼苗购买价 = fish_types.json中的price × buy_price_multiplier",
+  "_comment_sell": "鱼籽出售价 = fish_types.json中的roe_price × sell_price_multiplier"
+}

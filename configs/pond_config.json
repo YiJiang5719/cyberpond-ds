@@ -1,0 +1,9 @@
+{
+  "ponds": [
+    { "index": 1, "unlock_cost": 0, "max_fish_count": 3 },
+    { "index": 2, "unlock_cost": 200, "max_fish_count": 5 },
+    { "index": 3, "unlock_cost": 500, "max_fish_count": 7 },
+    { "index": 4, "unlock_cost": 1000, "max_fish_count": 9 },
+    { "index": 5, "unlock_cost": 2000, "max_fish_count": 12 }
+  ]
+}

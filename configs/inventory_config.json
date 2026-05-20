@@ -1,0 +1,5 @@
+{
+  "initial_slots": 10,
+  "slot_unlock_cost": 100,
+  "max_slots": 30
+}

@@ -1,0 +1,25 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Build outputs
+*.apk
+*.aab
+
+# IDE
+.idea/
+.vs/
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Godot .NET build artifacts
+.mono/
+bin/
+obj/
+
+# Claude Code
+.claude/
+.mcp.json

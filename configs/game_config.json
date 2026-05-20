@@ -1,0 +1,5 @@
+{
+  "starting_coins": 100,
+  "starting_free_ponds": 1,
+  "max_pond_count": 5
+}

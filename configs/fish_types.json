@@ -1,0 +1,42 @@
+{
+  "common_carp": {
+    "id": "common_carp",
+    "name": "普通鲤鱼",
+    "description": "最常见的淡水鱼，适应力强，成长迅速",
+    "price": 50,
+    "growth_time_hours": 24,
+    "daily_roe": 2,
+    "roe_price": 30,
+    "color": "#FF6B6B"
+  },
+  "goldfish": {
+    "id": "goldfish",
+    "name": "金鱼",
+    "description": "色彩鲜艳的观赏鱼，深受喜爱",
+    "price": 150,
+    "growth_time_hours": 48,
+    "daily_roe": 4,
+    "roe_price": 50,
+    "color": "#FFD700"
+  },
+  "koi": {
+    "id": "koi",
+    "name": "锦鲤",
+    "description": "象征好运的珍贵鱼类，价值不菲",
+    "price": 500,
+    "growth_time_hours": 72,
+    "daily_roe": 6,
+    "roe_price": 100,
+    "color": "#FF8C42"
+  },
+  "arowana": {
+    "id": "arowana",
+    "name": "金龙鱼",
+    "description": "稀有高贵的龙鱼，产量极高",
+    "price": 1500,
+    "growth_time_hours": 120,
+    "daily_roe": 8,
+    "roe_price": 250,
+    "color": "#FFD700"
+  }
+}
