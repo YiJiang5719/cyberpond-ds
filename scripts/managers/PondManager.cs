@@ -92,6 +92,12 @@ public partial class PondManager : Node
         _ponds.Add(PondData.FromDict(dict));
     }
 
+    public void ResetAll()
+    {
+        _ponds.Clear();
+        GD.Print("[PondManager] All ponds cleared.");
+    }
+
     private Dictionary LoadConfig(string path)
     {
         using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);

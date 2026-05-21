@@ -90,6 +90,14 @@ public partial class InventoryManager : Node
 		return true;
 	}
 
+	public void ResetAll()
+	{
+		_fry.Clear();
+		_roe.Clear();
+		_unlockedSlots = 10;
+		GD.Print("[InventoryManager] All inventory cleared.");
+	}
+
 	public Godot.Collections.Dictionary ToDict()
 	{
 		var fryDict = new Godot.Collections.Dictionary();

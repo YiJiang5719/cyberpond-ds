@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c12qok5s0ljup" path="res://scripts/ui/PondDetailUI.cs" id="1_script"]
 
-[node name="PondDetail" type="Control"]
+[node name="PondDetail" type="Control" unique_id=1106223177]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=260718716]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.89, 0.95, 0.99, 1)
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="." unique_id=510726310]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
@@ -28,7 +28,7 @@ offset_right = 400.0
 offset_bottom = 84.0
 text = "Pond Name"
 
-[node name="FishCountLabel" type="Label" parent="."]
+[node name="FishCountLabel" type="Label" parent="." unique_id=759527863]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 88.0
@@ -36,17 +36,17 @@ offset_right = 400.0
 offset_bottom = 112.0
 text = "Fish: 0 / 3"
 
-[node name="FishScroll" type="ScrollContainer" parent="."]
+[node name="FishScroll" type="ScrollContainer" parent="." unique_id=551385454]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 120.0
+offset_top = 144.0
 offset_right = 400.0
-offset_bottom = 440.0
+offset_bottom = 396.0
 
-[node name="FishList" type="VBoxContainer" parent="FishScroll"]
+[node name="FishList" type="VBoxContainer" parent="FishScroll" unique_id=70720571]
 layout_mode = 2
 
-[node name="EmptyHint" type="Label" parent="."]
+[node name="EmptyHint" type="Label" parent="." unique_id=964707812]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,10 +62,10 @@ grow_vertical = 2
 text = "No fish in this pond"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=19535555]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 450.0
-offset_right = 400.0
-offset_bottom = 490.0
+offset_top = 448.0
+offset_right = 396.0
+offset_bottom = 484.0
 text = "Back"

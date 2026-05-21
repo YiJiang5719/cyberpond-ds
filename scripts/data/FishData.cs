@@ -41,7 +41,7 @@ public class FishData
 		{
 			Id = dict.TryGetValue("id", out var id) ? id.AsString() : Guid.NewGuid().ToString(),
 			SpawnedAt = DateTime.Parse(dict["spawned_at"].AsString()),
-			IsAdult = dict.TryGetValue("uncollected_roe", out var adult) && adult.AsBool(),
+			IsAdult = dict.TryGetValue("is_adult", out var adult) && adult.AsBool(),
 			UncollectedRoe = dict.TryGetValue("uncollected_roe", out var roe) ? roe.AsInt32() : 0,
 			LastRoeTime = dict.TryGetValue("last_roe_time", out var lrt) ? DateTime.Parse(lrt.AsString()) : DateTime.UtcNow
 		};
