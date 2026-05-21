@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvywj8rb3hqat" path="res://scripts/ui/InventoryUI.cs" id="1_script"]
 
-[node name="Inventory" type="Control"]
+[node name="Inventory" type="Control" unique_id=2138304048]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1371697864]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.89, 0.95, 0.99, 1)
 
-[node name="CoinsLabel" type="Label" parent="."]
+[node name="CoinsLabel" type="Label" parent="." unique_id=1394089567]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
@@ -28,7 +28,7 @@ offset_right = 400.0
 offset_bottom = 76.0
 text = "Coins: 0"
 
-[node name="SlotLabel" type="Label" parent="."]
+[node name="SlotLabel" type="Label" parent="." unique_id=816435916]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 84.0
@@ -36,7 +36,7 @@ offset_right = 400.0
 offset_bottom = 108.0
 text = "Slots: 0 / 10"
 
-[node name="FryHeader" type="Label" parent="."]
+[node name="FryHeader" type="Label" parent="." unique_id=1842347075]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 116.0
@@ -44,17 +44,17 @@ offset_right = 400.0
 offset_bottom = 140.0
 text = "Fish Fry"
 
-[node name="FryScroll" type="ScrollContainer" parent="."]
+[node name="FryScroll" type="ScrollContainer" parent="." unique_id=253811070]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 144.0
 offset_right = 400.0
 offset_bottom = 256.0
 
-[node name="FryList" type="VBoxContainer" parent="FryScroll"]
+[node name="FryList" type="VBoxContainer" parent="FryScroll" unique_id=1518186502]
 layout_mode = 2
 
-[node name="RoeHeader" type="Label" parent="."]
+[node name="RoeHeader" type="Label" parent="." unique_id=527755089]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 264.0
@@ -62,17 +62,17 @@ offset_right = 400.0
 offset_bottom = 288.0
 text = "Fish Roe"
 
-[node name="RoeScroll" type="ScrollContainer" parent="."]
+[node name="RoeScroll" type="ScrollContainer" parent="." unique_id=543449087]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 292.0
 offset_right = 400.0
 offset_bottom = 384.0
 
-[node name="RoeList" type="VBoxContainer" parent="RoeScroll"]
+[node name="RoeList" type="VBoxContainer" parent="RoeScroll" unique_id=492846272]
 layout_mode = 2
 
-[node name="UnlockSlotBtn" type="Button" parent="."]
+[node name="UnlockSlotBtn" type="Button" parent="." unique_id=1347112378]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 396.0
@@ -80,19 +80,17 @@ offset_right = 200.0
 offset_bottom = 430.0
 text = "Unlock Slot"
 
-[node name="BottomNav" type="ColorRect" parent="."]
+[node name="BottomNav" type="ColorRect" parent="." unique_id=737145166]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-anchor_bottom = 1.0
-anchor_left = 0.0
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = -56.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(1, 1, 1, 1)
 
-[node name="NavButtons" type="HBoxContainer" parent="BottomNav"]
+[node name="NavButtons" type="HBoxContainer" parent="BottomNav" unique_id=1300804557]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,17 +98,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="MapBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1076825842]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Map"
-size_flags_horizontal = 3
 
-[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1758813146]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Shop"
-size_flags_horizontal = 3
 
-[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1838518337]
 layout_mode = 2
-text = "Inventory"
 size_flags_horizontal = 3
+text = "Inventory"

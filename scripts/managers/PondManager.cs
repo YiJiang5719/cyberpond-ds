@@ -31,18 +31,18 @@ public partial class PondManager : Node
     public int GetUnlockCost()
     {
         int index = _ponds.Count; // Next pond is index+1, but we use 0-based array
-        var costs = (Array)_pondConfig["unlock_costs"];
+        var costs = (Array)_pondConfig["ponds"];
         if (index < costs.Count)
-            return ((Dictionary)costs[index])["cost"].AsInt32();
+            return ((Dictionary)costs[index])["unlock_cost"].AsInt32();
         return -1; // Already max
     }
 
     public int GetMaxFishForNextPond()
     {
         int index = _ponds.Count;
-        var costs = (Array)_pondConfig["unlock_costs"];
+        var costs = (Array)_pondConfig["ponds"];
         if (index < costs.Count)
-            return ((Dictionary)costs[index])["max_fish"].AsInt32();
+            return ((Dictionary)costs[index])["max_fish_count"].AsInt32();
         return -1;
     }
 
@@ -54,11 +54,11 @@ public partial class PondManager : Node
 
     public int GetMaxFishCount(int pondIndex)
     {
-        var costs = (Array)_pondConfig["unlock_costs"];
+        var costs = (Array)_pondConfig["ponds"];
         if (pondIndex < _ponds.Count && pondIndex < costs.Count)
-            return ((Dictionary)costs[pondIndex])["max_fish"].AsInt32();
+            return ((Dictionary)costs[pondIndex])["max_fish_count"].AsInt32();
         if (pondIndex < costs.Count)
-            return ((Dictionary)costs[pondIndex])["max_fish"].AsInt32();
+            return ((Dictionary)costs[pondIndex])["max_fish_count"].AsInt32();
         return -1;
     }
 

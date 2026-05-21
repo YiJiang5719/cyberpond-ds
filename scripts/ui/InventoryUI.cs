@@ -19,9 +19,9 @@ public partial class InventoryUI : Control
 		_fryList = GetNode<VBoxContainer>("FryScroll/FryList");
 		_roeList = GetNode<VBoxContainer>("RoeScroll/RoeList");
 
-		_mapBtn = GetNode<Button>("BottomNav/MapBtn");
-		_shopBtn = GetNode<Button>("BottomNav/ShopBtn");
-		_inventoryBtn = GetNode<Button>("BottomNav/InventoryBtn");
+		_mapBtn = GetNode<Button>("BottomNav/NavButtons/MapBtn");
+		_shopBtn = GetNode<Button>("BottomNav/NavButtons/ShopBtn");
+		_inventoryBtn = GetNode<Button>("BottomNav/NavButtons/InventoryBtn");
 
 		_mapBtn.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/main_map.tscn");
 		_shopBtn.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/shop.tscn");

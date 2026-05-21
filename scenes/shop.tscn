@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyg5ijqhva0ql" path="res://scripts/ui/ShopUI.cs" id="1_script"]
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" unique_id=278182989]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=631718785]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.89, 0.95, 0.99, 1)
 
-[node name="CoinsLabel" type="Label" parent="."]
+[node name="CoinsLabel" type="Label" parent="." unique_id=2105851114]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
@@ -28,7 +28,7 @@ offset_right = 400.0
 offset_bottom = 76.0
 text = "Coins: 0"
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="." unique_id=1857223358]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 84.0
@@ -36,29 +36,27 @@ offset_right = 400.0
 offset_bottom = 116.0
 text = "Fish Shop"
 
-[node name="FishScroll" type="ScrollContainer" parent="."]
+[node name="FishScroll" type="ScrollContainer" parent="." unique_id=2140746742]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 124.0
 offset_right = 400.0
 offset_bottom = 424.0
 
-[node name="FishList" type="VBoxContainer" parent="FishScroll"]
+[node name="FishList" type="VBoxContainer" parent="FishScroll" unique_id=1521517924]
 layout_mode = 2
 
-[node name="BottomNav" type="ColorRect" parent="."]
+[node name="BottomNav" type="ColorRect" parent="." unique_id=199239117]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-anchor_bottom = 1.0
-anchor_left = 0.0
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = -56.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(1, 1, 1, 1)
 
-[node name="NavButtons" type="HBoxContainer" parent="BottomNav"]
+[node name="NavButtons" type="HBoxContainer" parent="BottomNav" unique_id=1034692862]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,17 +64,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="MapBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1599043173]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Map"
-size_flags_horizontal = 3
 
-[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1122091936]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Shop"
-size_flags_horizontal = 3
 
-[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons" unique_id=57975797]
 layout_mode = 2
-text = "Inventory"
 size_flags_horizontal = 3
+text = "Inventory"

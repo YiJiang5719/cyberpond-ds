@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjmihqxucx8co" path="res://scripts/ui/MainMapUI.cs" id="1_script"]
 
-[node name="MainMap" type="Control"]
+[node name="MainMap" type="Control" unique_id=1991397668]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=882464994]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.89, 0.95, 0.99, 1)
 
-[node name="CoinsLabel" type="Label" parent="."]
+[node name="CoinsLabel" type="Label" parent="." unique_id=1939829959]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
@@ -28,17 +28,17 @@ offset_right = 400.0
 offset_bottom = 76.0
 text = "Coins: 0"
 
-[node name="PondScroll" type="ScrollContainer" parent="."]
+[node name="PondScroll" type="ScrollContainer" parent="." unique_id=2065289763]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 84.0
 offset_right = 400.0
 offset_bottom = 380.0
 
-[node name="PondList" type="VBoxContainer" parent="PondScroll"]
+[node name="PondList" type="VBoxContainer" parent="PondScroll" unique_id=1971883205]
 layout_mode = 2
 
-[node name="EmptyHint" type="Label" parent="."]
+[node name="EmptyHint" type="Label" parent="." unique_id=1047610028]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,7 +54,7 @@ grow_vertical = 2
 text = "No ponds yet. Create your first!"
 horizontal_alignment = 1
 
-[node name="CreateButton" type="Button" parent="."]
+[node name="CreateButton" type="Button" parent="." unique_id=1004830080]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 390.0
@@ -62,17 +62,17 @@ offset_right = 400.0
 offset_bottom = 430.0
 text = "+ Create New Pond"
 
-[node name="CreateDialog" type="ColorRect" parent="."]
+[node name="CreateDialog" type="ColorRect" parent="." unique_id=1346706551]
 visible = false
-color = Color(0.89, 0.95, 0.99, 0.95)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.89, 0.95, 0.99, 0.95)
 
-[node name="DialogTitle" type="Label" parent="CreateDialog"]
+[node name="DialogTitle" type="Label" parent="CreateDialog" unique_id=1547588402]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 160.0
@@ -80,7 +80,7 @@ offset_right = 380.0
 offset_bottom = 196.0
 text = "Create New Pond"
 
-[node name="CostLabel" type="Label" parent="CreateDialog"]
+[node name="CostLabel" type="Label" parent="CreateDialog" unique_id=340319510]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 204.0
@@ -88,7 +88,7 @@ offset_right = 380.0
 offset_bottom = 228.0
 text = "Cost: Free"
 
-[node name="NameInput" type="LineEdit" parent="CreateDialog"]
+[node name="NameInput" type="LineEdit" parent="CreateDialog" unique_id=575977524]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 240.0
@@ -96,7 +96,7 @@ offset_right = 380.0
 offset_bottom = 276.0
 placeholder_text = "Enter pond name..."
 
-[node name="ConfirmCreate" type="Button" parent="CreateDialog"]
+[node name="ConfirmCreate" type="Button" parent="CreateDialog" unique_id=690031685]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 290.0
@@ -104,7 +104,7 @@ offset_right = 210.0
 offset_bottom = 328.0
 text = "Create"
 
-[node name="CancelCreate" type="Button" parent="CreateDialog"]
+[node name="CancelCreate" type="Button" parent="CreateDialog" unique_id=1909070318]
 layout_mode = 0
 offset_left = 218.0
 offset_top = 290.0
@@ -112,19 +112,17 @@ offset_right = 380.0
 offset_bottom = 328.0
 text = "Cancel"
 
-[node name="BottomNav" type="ColorRect" parent="."]
+[node name="BottomNav" type="ColorRect" parent="." unique_id=243625557]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-anchor_bottom = 1.0
-anchor_left = 0.0
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = -56.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(1, 1, 1, 1)
 
-[node name="NavButtons" type="HBoxContainer" parent="BottomNav"]
+[node name="NavButtons" type="HBoxContainer" parent="BottomNav" unique_id=662170141]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,17 +130,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="MapBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1918558223]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Map"
-size_flags_horizontal = 3
 
-[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons" unique_id=994330739]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Shop"
-size_flags_horizontal = 3
 
-[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons"]
+[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons" unique_id=161376656]
 layout_mode = 2
-text = "Inventory"
 size_flags_horizontal = 3
+text = "Inventory"
