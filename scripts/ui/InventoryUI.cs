@@ -57,6 +57,19 @@ public partial class InventoryUI : Control
 		}
 	}
 
+	private TextureRect CreateFishSprite(string fishType)
+	{
+		var rect = new TextureRect();
+		rect.CustomMinimumSize = new Vector2(48, 48);
+		rect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+		rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+		var fishManager = GetNode<FishManager>("/root/FishManager");
+		var path = fishManager.GetSpritePath(fishType);
+		if (!string.IsNullOrEmpty(path))
+			rect.Texture = GD.Load<Texture2D>(path);
+		return rect;
+	}
+
 	private Control CreateFryEntry(string fishType, int count)
 	{
 		var panel = new PanelContainer();
@@ -75,6 +88,9 @@ public partial class InventoryUI : Control
 
 		var hbox = new HBoxContainer();
 		hbox.AddThemeConstantOverride("separation", 8);
+
+		var sprite = CreateFishSprite(fishType);
+		hbox.AddChild(sprite);
 
 		var nameLabel = new Label { Text = $"{GetDisplayName(fishType)} Fry x{count}" };
 		hbox.AddChild(nameLabel);
@@ -106,6 +122,9 @@ public partial class InventoryUI : Control
 
 		var hbox = new HBoxContainer();
 		hbox.AddThemeConstantOverride("separation", 8);
+
+		var sprite = CreateFishSprite(fishType);
+		hbox.AddChild(sprite);
 
 		var nameLabel = new Label { Text = $"{GetDisplayName(fishType)} Roe x{count}" };
 		hbox.AddChild(nameLabel);

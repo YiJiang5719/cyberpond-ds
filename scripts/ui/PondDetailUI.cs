@@ -99,6 +99,18 @@ public partial class PondDetailUI : Control
 			_fishList.AddChild(CreateFishEntry(fish, fishManager));
 	}
 
+	private TextureRect CreateFishSprite(string fishType)
+	{
+		var rect = new TextureRect();
+		rect.CustomMinimumSize = new Vector2(48, 48);
+		rect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+		rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+		var path = GetNode<FishManager>("/root/FishManager").GetSpritePath(fishType);
+		if (!string.IsNullOrEmpty(path))
+			rect.Texture = GD.Load<Texture2D>(path);
+		return rect;
+	}
+
 	private Control CreateFishEntry(FishData fish, FishManager fishManager)
 	{
 		var button = new Button();
@@ -120,6 +132,9 @@ public partial class PondDetailUI : Control
 		var hbox = new HBoxContainer();
 		hbox.MouseFilter = MouseFilterEnum.Ignore;
 		hbox.AddThemeConstantOverride("separation", 8);
+
+		var sprite = CreateFishSprite(fish.FishType);
+		hbox.AddChild(sprite);
 
 		var nameLabel = new Label { Text = fishManager.GetDisplayName(fish.FishType) };
 		hbox.AddChild(nameLabel);
@@ -205,10 +220,20 @@ public partial class PondDetailUI : Control
 		});
 
 		var fishManager = GetNode<FishManager>("/root/FishManager");
+
+		var hbox = new HBoxContainer();
+		hbox.MouseFilter = MouseFilterEnum.Ignore;
+		hbox.AddThemeConstantOverride("separation", 8);
+
+		var sprite = CreateFishSprite(fishType);
+		hbox.AddChild(sprite);
+
 		var label = new Label { Text = $"{fishManager.GetDisplayName(fishType)} Fry x{count}" };
 		label.MouseFilter = MouseFilterEnum.Ignore;
 		label.AddThemeColorOverride("font_color", new Color("#212121"));
-		button.AddChild(label);
+		hbox.AddChild(label);
+
+		button.AddChild(hbox);
 
 		button.Pressed += () =>
 		{

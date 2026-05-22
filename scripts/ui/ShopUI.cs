@@ -19,6 +19,7 @@ public partial class ShopUI : Control
 	private Label _popupSellPrice;
 	private Label _popupBuyPrice;
 	private Button _popupBuyBtn;
+	private TextureRect _popupSprite;
 	private string _selectedFishType;
 	private int _selectedFishPrice;
 
@@ -59,6 +60,19 @@ public partial class ShopUI : Control
 		GD.Print($"[ShopUI] Done. FishList has {_fishList.GetChildCount()} children.");
 	}
 
+	private TextureRect CreateFishSprite(string fishType)
+	{
+		var rect = new TextureRect();
+		rect.CustomMinimumSize = new Vector2(48, 48);
+		rect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+		rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+		var fishManager = GetNode<FishManager>("/root/FishManager");
+		var path = fishManager.GetSpritePath(fishType);
+		if (!string.IsNullOrEmpty(path))
+			rect.Texture = GD.Load<Texture2D>(path);
+		return rect;
+	}
+
 	private Control CreateFishCard(Dictionary fishDef)
 	{
 		var card = new Button();
@@ -93,6 +107,9 @@ public partial class ShopUI : Control
 		var hbox = new HBoxContainer();
 		hbox.MouseFilter = MouseFilterEnum.Ignore;
 		hbox.AddThemeConstantOverride("separation", 12);
+
+		var sprite = CreateFishSprite(fishDef["id"].ToString());
+		hbox.AddChild(sprite);
 
 		var info = new VBoxContainer();
 		info.MouseFilter = MouseFilterEnum.Ignore;
@@ -161,6 +178,11 @@ public partial class ShopUI : Control
 		_popupTitle = new Label();
 		_popupTitle.AddThemeFontSizeOverride("font_size", 20);
 
+		_popupSprite = new TextureRect();
+		_popupSprite.CustomMinimumSize = new Vector2(80, 80);
+		_popupSprite.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+		_popupSprite.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+
 		_popupDesc = new Label();
 		_popupDesc.AddThemeColorOverride("font_color", new Color("#757575"));
 		_popupDesc.AddThemeFontSizeOverride("font_size", 13);
@@ -194,6 +216,7 @@ public partial class ShopUI : Control
 		btnRow.AddChild(closeBtn);
 
 		vbox.AddChild(_popupTitle);
+		vbox.AddChild(_popupSprite);
 		vbox.AddChild(_popupDesc);
 		vbox.AddChild(new Control { CustomMinimumSize = new Vector2(0, 4) });
 		vbox.AddChild(_popupGrowth);
@@ -214,6 +237,7 @@ public partial class ShopUI : Control
 		var fishDef = (Dictionary)_fishTypes[fishType];
 
 		_popupTitle.Text = fishDef["name"].ToString();
+		_popupSprite.Texture = GD.Load<Texture2D>(fishDef["sprite"].ToString());
 		_popupDesc.Text = fishDef["description"].ToString();
 
 		int hours = fishDef["growth_time_hours"].AsInt32();

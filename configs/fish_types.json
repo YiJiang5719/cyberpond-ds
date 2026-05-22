@@ -7,7 +7,8 @@
     "growth_time_hours": 0.1,
     "daily_roe": 2,
     "roe_price": 30,
-    "color": "#FF6B6B"
+    "color": "#FF6B6B",
+    "sprite": "res://assets/fish/fish_0.png"
   },
   "goldfish": {
     "id": "goldfish",
@@ -17,7 +18,8 @@
     "growth_time_hours": 0.5,
     "daily_roe": 4,
     "roe_price": 50,
-    "color": "#FFD700"
+    "color": "#FFD700",
+    "sprite": "res://assets/fish/fish_1.png"
   },
   "koi": {
     "id": "koi",
@@ -27,7 +29,8 @@
     "growth_time_hours": 1,
     "daily_roe": 6,
     "roe_price": 100,
-    "color": "#FF8C42"
+    "color": "#FF8C42",
+    "sprite": "res://assets/fish/fish_2.png"
   },
   "arowana": {
     "id": "arowana",
@@ -37,6 +40,7 @@
     "growth_time_hours": 2,
     "daily_roe": 8,
     "roe_price": 250,
-    "color": "#FFD700"
+    "color": "#FFD700",
+    "sprite": "res://assets/fish/fish_3.png"
   }
 }

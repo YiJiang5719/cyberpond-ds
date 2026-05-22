@@ -112,6 +112,14 @@ public partial class FishManager : Node
 		return total;
 	}
 
+	public string GetSpritePath(string typeKey)
+	{
+		var fishDef = (Dictionary)_fishConfig[typeKey];
+		if (fishDef.TryGetValue("sprite", out var sprite))
+			return sprite.AsString();
+		return "";
+	}
+
 	public string GetGrowthRemaining(FishData fish)
 	{
 		if (fish.IsAdult) return "Adult";
