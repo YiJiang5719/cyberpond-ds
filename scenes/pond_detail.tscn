@@ -18,30 +18,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.89, 0.95, 0.99, 1)
+color = Color(0.10980392, 0.32156864, 0.4392157, 1)
 
 [node name="TitleLabel" type="Label" parent="." unique_id=510726310]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 48.0
-offset_right = 400.0
-offset_bottom = 84.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 1048.0
+offset_bottom = 76.0
 text = "Pond Name"
 
 [node name="FishCountLabel" type="Label" parent="." unique_id=759527863]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 32.0
 offset_top = 88.0
-offset_right = 400.0
-offset_bottom = 112.0
+offset_right = 1048.0
+offset_bottom = 120.0
 text = "Fish: 0 / 3"
 
 [node name="FishScroll" type="ScrollContainer" parent="." unique_id=551385454]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 32.0
 offset_top = 144.0
-offset_right = 400.0
-offset_bottom = 396.0
+offset_right = 1048.0
+offset_bottom = 1600.0
 
 [node name="FishList" type="VBoxContainer" parent="FishScroll" unique_id=70720571]
 layout_mode = 2
@@ -53,9 +53,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.0
+offset_left = -200.0
 offset_top = -16.0
-offset_right = 80.0
+offset_right = 200.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -64,8 +64,8 @@ horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="." unique_id=19535555]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 448.0
-offset_right = 396.0
-offset_bottom = 484.0
+offset_left = 32.0
+offset_top = 1740.0
+offset_right = 1048.0
+offset_bottom = 1812.0
 text = "Back"

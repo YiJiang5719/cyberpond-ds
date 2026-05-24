@@ -93,11 +93,11 @@ public partial class DiscoverUI : Control
 		info.MouseFilter = MouseFilterEnum.Ignore;
 
 		var nameLabel = new Label { Text = islandDef["name"].AsString() };
-		nameLabel.AddThemeFontSizeOverride("font_size", 20);
+		nameLabel.AddThemeFontSizeOverride("font_size", 32);
 
 		var descLabel = new Label { Text = islandDef["description"].AsString() };
 		descLabel.AddThemeColorOverride("font_color", new Color("#424242"));
-		descLabel.AddThemeFontSizeOverride("font_size", 13);
+		descLabel.AddThemeFontSizeOverride("font_size", 22);
 
 		info.AddChild(nameLabel);
 		info.AddChild(descLabel);
@@ -107,7 +107,7 @@ public partial class DiscoverUI : Control
 
 		var arrow = new Label { Text = ">" };
 		arrow.AddThemeColorOverride("font_color", new Color("#1E88E5"));
-		arrow.AddThemeFontSizeOverride("font_size", 20);
+		arrow.AddThemeFontSizeOverride("font_size", 32);
 		hbox.AddChild(arrow);
 
 		card.AddChild(hbox);

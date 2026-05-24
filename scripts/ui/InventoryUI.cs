@@ -152,25 +152,90 @@ public partial class InventoryUI : Control
 		panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
 		{
 			BgColor = new Color("#FFFFFF"),
-			CornerRadiusTopLeft = 6,
-			CornerRadiusTopRight = 6,
-			CornerRadiusBottomLeft = 6,
-			CornerRadiusBottomRight = 6,
+			CornerRadiusTopLeft = 8,
+			CornerRadiusTopRight = 8,
+			CornerRadiusBottomLeft = 8,
+			CornerRadiusBottomRight = 8,
 			ContentMarginLeft = 12,
 			ContentMarginRight = 12,
-			ContentMarginTop = 8,
-			ContentMarginBottom = 8
+			ContentMarginTop = 10,
+			ContentMarginBottom = 10
 		});
 
 		var hbox = new HBoxContainer();
-		hbox.AddThemeConstantOverride("separation", 8);
+		hbox.AddThemeConstantOverride("separation", 12);
 
-		var nameLabel = new Label { Text = $"{GetItemDisplayName(itemId)} x{count}" };
-		hbox.AddChild(nameLabel);
+		// Ticket sprite
+		string spritePath = GetItemSprite(itemId);
+		if (!string.IsNullOrEmpty(spritePath))
+		{
+			var tex = GD.Load<Texture2D>(spritePath);
+			if (tex != null)
+			{
+				var spriteRect = new TextureRect();
+				spriteRect.Texture = tex;
+				spriteRect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+				spriteRect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+				spriteRect.CustomMinimumSize = new Vector2(48, 48);
+				hbox.AddChild(spriteRect);
+			}
+		}
+
+		var info = new VBoxContainer();
+		var nameLabel = new Label { Text = GetItemDisplayName(itemId) };
+		nameLabel.AddThemeFontSizeOverride("font_size", 26);
+
+		var descLabel = new Label { Text = GetItemDescription(itemId) };
+		descLabel.AddThemeColorOverride("font_color", new Color("#777777"));
+		descLabel.AddThemeFontSizeOverride("font_size", 20);
+
+		var countLabel = new Label { Text = $"数量: {count}" };
+		countLabel.AddThemeColorOverride("font_color", new Color("#42A5F5"));
+		countLabel.AddThemeFontSizeOverride("font_size", 22);
+
+		info.AddChild(nameLabel);
+		info.AddChild(descLabel);
+		info.AddChild(countLabel);
+
+		hbox.AddChild(info);
 		hbox.AddChild(new Control { SizeFlagsHorizontal = Control.SizeFlags.Expand });
 
 		panel.AddChild(hbox);
 		return panel;
+	}
+
+	private static string GetItemSprite(string itemId)
+	{
+		// Check islands.json for ticket_sprite
+		var config = LoadConfigStatic("res://configs/islands.json");
+		var islands = (Godot.Collections.Array)config["islands"];
+		foreach (Godot.Collections.Dictionary island in islands)
+		{
+			if (island["ticket_id"].AsString() == itemId && island.TryGetValue("ticket_sprite", out var sp))
+				return sp.AsString();
+		}
+		// Check shop_config.json tickets
+		var shopConfig = LoadConfigStatic("res://configs/shop_config.json");
+		var tickets = (Godot.Collections.Array)shopConfig["available_tickets"];
+		foreach (Godot.Collections.Dictionary ticket in tickets)
+		{
+			if (ticket["id"].AsString() == itemId && ticket.TryGetValue("sprite", out var sp))
+				return sp.AsString();
+		}
+		return "";
+	}
+
+	private static string GetItemDescription(string itemId)
+	{
+		// Check shop_config.json tickets
+		var shopConfig = LoadConfigStatic("res://configs/shop_config.json");
+		var tickets = (Godot.Collections.Array)shopConfig["available_tickets"];
+		foreach (Godot.Collections.Dictionary ticket in tickets)
+		{
+			if (ticket["id"].AsString() == itemId && ticket.TryGetValue("description", out var desc))
+				return desc.AsString();
+		}
+		return "";
 	}
 
 	private static string GetItemDisplayName(string itemId)

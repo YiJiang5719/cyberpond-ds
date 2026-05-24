@@ -18,58 +18,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.89, 0.95, 0.99, 1)
+color = Color(0.10980392, 0.32156864, 0.4392157, 1)
 
 [node name="CoinsLabel" type="Label" parent="." unique_id=2105851114]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 48.0
-offset_right = 400.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 1048.0
 offset_bottom = 76.0
 text = "Coins: 0"
 
 [node name="TitleLabel" type="Label" parent="." unique_id=1857223358]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 84.0
-offset_right = 400.0
-offset_bottom = 116.0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 1048.0
+offset_bottom = 144.0
 text = "Shop"
 
-[node name="FishHeader" type="Label" parent="." unique_id=3876543210]
+[node name="FishHeader" type="Label" parent="." unique_id=-418424086]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 124.0
-offset_right = 400.0
-offset_bottom = 148.0
+offset_left = 32.0
+offset_top = 160.0
+offset_right = 1048.0
+offset_bottom = 192.0
 text = "— Fish Fry —"
 
 [node name="FishScroll" type="ScrollContainer" parent="." unique_id=2140746742]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 152.0
-offset_right = 400.0
-offset_bottom = 260.0
+offset_left = 32.0
+offset_top = 200.0
+offset_right = 1048.0
+offset_bottom = 960.0
 
 [node name="FishList" type="VBoxContainer" parent="FishScroll" unique_id=1521517924]
 layout_mode = 2
 
-[node name="TicketHeader" type="Label" parent="." unique_id=3876543211]
+[node name="TicketHeader" type="Label" parent="." unique_id=-418424085]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 268.0
-offset_right = 400.0
-offset_bottom = 292.0
+offset_left = 32.0
+offset_top = 980.0
+offset_right = 1048.0
+offset_bottom = 1012.0
 text = "— Boat Tickets —"
 
-[node name="TicketScroll" type="ScrollContainer" parent="." unique_id=3876543212]
+[node name="TicketScroll" type="ScrollContainer" parent="." unique_id=-418424084]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 296.0
-offset_right = 400.0
-offset_bottom = 424.0
+offset_left = 32.0
+offset_top = 1020.0
+offset_right = 1048.0
+offset_bottom = 1728.0
 
-[node name="TicketList" type="VBoxContainer" parent="TicketScroll" unique_id=3876543213]
+[node name="TicketList" type="VBoxContainer" parent="TicketScroll" unique_id=-418424083]
 layout_mode = 2
 
 [node name="BottomNav" type="ColorRect" parent="." unique_id=199239117]
@@ -78,7 +78,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -56.0
+offset_top = -120.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -95,7 +95,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "鱼塘"
 
-[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=2988654322]
+[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=-1306312974]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "发现"

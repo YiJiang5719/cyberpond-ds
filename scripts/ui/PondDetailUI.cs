@@ -30,30 +30,30 @@ public partial class PondDetailUI : Control
 		// Roe label: between FishCountLabel and FishScroll
 		_roeLabel = new Label();
 		_roeLabel.LayoutMode = 0;
-		_roeLabel.OffsetLeft = 16;
-		_roeLabel.OffsetTop = 116;
-		_roeLabel.OffsetRight = 400;
-		_roeLabel.OffsetBottom = 140;
+		_roeLabel.OffsetLeft = 32;
+		_roeLabel.OffsetTop = 126;
+		_roeLabel.OffsetRight = 1048;
+		_roeLabel.OffsetBottom = 158;
 		_roeLabel.AddThemeColorOverride("font_color", new Color("#66BB6A"));
 		AddChild(_roeLabel);
 
 		// Place Fry button
 		_placeFryBtn = new Button { Text = "Place Fry" };
 		_placeFryBtn.LayoutMode = 0;
-		_placeFryBtn.OffsetLeft = 16;
-		_placeFryBtn.OffsetTop = 404;
-		_placeFryBtn.OffsetRight = 208;
-		_placeFryBtn.OffsetBottom = 440;
+		_placeFryBtn.OffsetLeft = 32;
+		_placeFryBtn.OffsetTop = 1700;
+		_placeFryBtn.OffsetRight = 536;
+		_placeFryBtn.OffsetBottom = 1772;
 		_placeFryBtn.Pressed += OnPlaceFry;
 		AddChild(_placeFryBtn);
 
 		// Collect Roe button
 		_collectRoeBtn = new Button { Text = "Collect Roe" };
 		_collectRoeBtn.LayoutMode = 0;
-		_collectRoeBtn.OffsetLeft = 216;
-		_collectRoeBtn.OffsetTop = 404;
-		_collectRoeBtn.OffsetRight = 400;
-		_collectRoeBtn.OffsetBottom = 440;
+		_collectRoeBtn.OffsetLeft = 568;
+		_collectRoeBtn.OffsetTop = 1700;
+		_collectRoeBtn.OffsetRight = 1048;
+		_collectRoeBtn.OffsetBottom = 1772;
 		_collectRoeBtn.Pressed += OnCollectRoe;
 		AddChild(_collectRoeBtn);
 
@@ -313,8 +313,8 @@ public partial class PondDetailUI : Control
 	{
 		var addCoinBtn = new Button { Text = "Add Coin" };
 		addCoinBtn.LayoutMode = 0;
-		addCoinBtn.OffsetRight = 404;
-		addCoinBtn.OffsetLeft = 316;
+		addCoinBtn.OffsetRight = 1048;
+		addCoinBtn.OffsetLeft = 960;
 		addCoinBtn.OffsetTop = 4;
 		addCoinBtn.OffsetBottom = 36;
 		addCoinBtn.Pressed += OnAddCoin;
@@ -322,8 +322,8 @@ public partial class PondDetailUI : Control
 
 		var resetBtn = new Button { Text = "Reset" };
 		resetBtn.LayoutMode = 0;
-		resetBtn.OffsetRight = 308;
-		resetBtn.OffsetLeft = 240;
+		resetBtn.OffsetRight = 960;
+		resetBtn.OffsetLeft = 876;
 		resetBtn.OffsetTop = 4;
 		resetBtn.OffsetBottom = 36;
 		resetBtn.Pressed += OnReset;

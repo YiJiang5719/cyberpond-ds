@@ -18,84 +18,84 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.89, 0.95, 0.99, 1)
+color = Color(0.10980392, 0.32156864, 0.4392157, 1)
 
 [node name="CoinsLabel" type="Label" parent="." unique_id=1394089567]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 48.0
-offset_right = 400.0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 1048.0
 offset_bottom = 76.0
 text = "Coins: 0"
 
 [node name="SlotLabel" type="Label" parent="." unique_id=816435916]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 84.0
-offset_right = 400.0
-offset_bottom = 108.0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 1048.0
+offset_bottom = 128.0
 text = "Slots: 0 / 10"
 
 [node name="FryHeader" type="Label" parent="." unique_id=1842347075]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 116.0
-offset_right = 400.0
-offset_bottom = 140.0
-text = "Fish Fry"
+offset_left = 32.0
+offset_top = 148.0
+offset_right = 1048.0
+offset_bottom = 176.0
+text = "— Fish Fry —"
 
 [node name="FryScroll" type="ScrollContainer" parent="." unique_id=253811070]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 144.0
-offset_right = 400.0
-offset_bottom = 256.0
+offset_left = 32.0
+offset_top = 184.0
+offset_right = 1048.0
+offset_bottom = 640.0
 
 [node name="FryList" type="VBoxContainer" parent="FryScroll" unique_id=1518186502]
 layout_mode = 2
 
 [node name="RoeHeader" type="Label" parent="." unique_id=527755089]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 264.0
-offset_right = 400.0
-offset_bottom = 288.0
-text = "Fish Roe"
+offset_left = 32.0
+offset_top = 660.0
+offset_right = 1048.0
+offset_bottom = 688.0
+text = "— Fish Roe —"
 
 [node name="RoeScroll" type="ScrollContainer" parent="." unique_id=543449087]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 292.0
-offset_right = 400.0
-offset_bottom = 352.0
+offset_left = 32.0
+offset_top = 696.0
+offset_right = 1048.0
+offset_bottom = 1152.0
 
 [node name="RoeList" type="VBoxContainer" parent="RoeScroll" unique_id=492846272]
 layout_mode = 2
 
-[node name="ItemsHeader" type="Label" parent="." unique_id=3912456781]
+[node name="ItemsHeader" type="Label" parent="." unique_id=-382510515]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 360.0
-offset_right = 400.0
-offset_bottom = 384.0
-text = "Items"
+offset_left = 32.0
+offset_top = 1172.0
+offset_right = 1048.0
+offset_bottom = 1200.0
+text = "— Items —"
 
-[node name="ItemsScroll" type="ScrollContainer" parent="." unique_id=3912456782]
+[node name="ItemsScroll" type="ScrollContainer" parent="." unique_id=-382510514]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 388.0
-offset_right = 400.0
-offset_bottom = 420.0
+offset_left = 32.0
+offset_top = 1208.0
+offset_right = 1048.0
+offset_bottom = 1600.0
 
-[node name="ItemsList" type="VBoxContainer" parent="ItemsScroll" unique_id=3912456783]
+[node name="ItemsList" type="VBoxContainer" parent="ItemsScroll" unique_id=-382510513]
 layout_mode = 2
 
 [node name="UnlockSlotBtn" type="Button" parent="." unique_id=1347112378]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 430.0
-offset_right = 200.0
-offset_bottom = 464.0
+offset_left = 32.0
+offset_top = 1624.0
+offset_right = 320.0
+offset_bottom = 1696.0
 text = "Unlock Slot"
 
 [node name="BottomNav" type="ColorRect" parent="." unique_id=737145166]
@@ -104,7 +104,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -56.0
+offset_top = -120.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -121,7 +121,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "鱼塘"
 
-[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=2988654323]
+[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=-1306312973]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "发现"

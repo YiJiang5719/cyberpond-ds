@@ -8,9 +8,9 @@
   "_comment_sell": "鱼籽出售价 = fish_types.json中的roe_price × sell_price_multiplier",
 
   "available_tickets": [
-    { "id": "boat_ticket_island_1", "island_id": "green_lake", "name": "翠湖船票", "price": 0 },
-    { "id": "boat_ticket_island_2", "island_id": "golden_bay", "name": "金鳞湾船票", "price": 200 },
-    { "id": "boat_ticket_island_3", "island_id": "koi_pond", "name": "锦鲤潭船票", "price": 500 },
-    { "id": "boat_ticket_island_4", "island_id": "dragon_abyss", "name": "龙渊船票", "price": 1500 }
+    { "id": "boat_ticket_island_1", "island_id": "green_lake", "name": "翠湖船票", "price": 0, "sprite": "res://assets/tickets/ticket_0.png", "description": "通往翠湖的船票，新手免费" },
+    { "id": "boat_ticket_island_2", "island_id": "golden_bay", "name": "金鳞湾船票", "price": 200, "sprite": "res://assets/tickets/ticket_1.png", "description": "通往金鳞湾的船票" },
+    { "id": "boat_ticket_island_3", "island_id": "koi_pond", "name": "锦鲤潭船票", "price": 500, "sprite": "res://assets/tickets/ticket_2.png", "description": "通往锦鲤潭的船票" },
+    { "id": "boat_ticket_island_4", "island_id": "dragon_abyss", "name": "龙渊船票", "price": 1500, "sprite": "res://assets/tickets/ticket_3.png", "description": "通往龙渊的船票" }
   ]
 }

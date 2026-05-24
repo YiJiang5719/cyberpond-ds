@@ -130,7 +130,7 @@ public partial class ShopUI : Control
 		var info = new VBoxContainer();
 		info.MouseFilter = MouseFilterEnum.Ignore;
 		var nameLabel = new Label { Text = fishDef["name"].ToString() };
-		nameLabel.AddThemeFontSizeOverride("font_size", 18);
+		nameLabel.AddThemeFontSizeOverride("font_size", 28);
 
 		var descLabel = new Label { Text = fishDef["description"].ToString() };
 		descLabel.AddThemeColorOverride("font_color", new Color("#757575"));
@@ -163,7 +163,7 @@ public partial class ShopUI : Control
 	{
 		var card = new Button();
 		card.SizeFlagsHorizontal = Control.SizeFlags.Fill;
-		card.CustomMinimumSize = new Vector2(0, 64);
+		card.CustomMinimumSize = new Vector2(0, 72);
 		card.Flat = true;
 		card.AddThemeStyleboxOverride("normal", new StyleBoxFlat
 		{
@@ -172,21 +172,37 @@ public partial class ShopUI : Control
 			CornerRadiusTopRight = 8,
 			CornerRadiusBottomLeft = 8,
 			CornerRadiusBottomRight = 8,
-			ContentMarginLeft = 16,
-			ContentMarginRight = 16,
-			ContentMarginTop = 10,
-			ContentMarginBottom = 10
+			ContentMarginLeft = 12,
+			ContentMarginRight = 12,
+			ContentMarginTop = 8,
+			ContentMarginBottom = 8
 		});
 
 		var hbox = new HBoxContainer();
 		hbox.MouseFilter = MouseFilterEnum.Ignore;
 		hbox.AddThemeConstantOverride("separation", 12);
 
+		// Ticket sprite
+		string spritePath = ticketDef.TryGetValue("sprite", out var sp) ? sp.AsString() : "";
+		if (!string.IsNullOrEmpty(spritePath))
+		{
+			var spriteTex = GD.Load<Texture2D>(spritePath);
+			if (spriteTex != null)
+			{
+				var spriteRect = new TextureRect();
+				spriteRect.Texture = spriteTex;
+				spriteRect.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+				spriteRect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+				spriteRect.CustomMinimumSize = new Vector2(56, 56);
+				hbox.AddChild(spriteRect);
+			}
+		}
+
 		var info = new VBoxContainer();
 		info.MouseFilter = MouseFilterEnum.Ignore;
 
 		var nameLabel = new Label { Text = ticketDef["name"].AsString() };
-		nameLabel.AddThemeFontSizeOverride("font_size", 16);
+		nameLabel.AddThemeFontSizeOverride("font_size", 26);
 
 		int price = ticketDef["price"].AsInt32();
 		var priceLabel = new Label { Text = price == 0 ? "Free" : $"Price: {price} coins" };
@@ -200,7 +216,7 @@ public partial class ShopUI : Control
 
 		var buyBtn = new Button { Text = price == 0 ? "Get" : "Buy" };
 		buyBtn.CustomMinimumSize = new Vector2(70, 36);
-		buyBtn.AddThemeFontSizeOverride("font_size", 14);
+		buyBtn.AddThemeFontSizeOverride("font_size", 22);
 
 		var ticketId = ticketDef["id"].AsString();
 		buyBtn.Pressed += () => OnBuyTicket(ticketId, price);
@@ -260,7 +276,7 @@ public partial class ShopUI : Control
 		vbox.AddThemeConstantOverride("separation", 8);
 
 		_popupTitle = new Label();
-		_popupTitle.AddThemeFontSizeOverride("font_size", 20);
+		_popupTitle.AddThemeFontSizeOverride("font_size", 32);
 
 		_popupSprite = new TextureRect();
 		_popupSprite.CustomMinimumSize = new Vector2(80, 80);
@@ -273,14 +289,14 @@ public partial class ShopUI : Control
 		_popupDesc.AutowrapMode = TextServer.AutowrapMode.WordSmart;
 
 		_popupGrowth = new Label();
-		_popupGrowth.AddThemeFontSizeOverride("font_size", 14);
+		_popupGrowth.AddThemeFontSizeOverride("font_size", 22);
 
 		_popupSellPrice = new Label();
-		_popupSellPrice.AddThemeFontSizeOverride("font_size", 14);
+		_popupSellPrice.AddThemeFontSizeOverride("font_size", 22);
 		_popupSellPrice.AddThemeColorOverride("font_color", new Color("#66BB6A"));
 
 		_popupBuyPrice = new Label();
-		_popupBuyPrice.AddThemeFontSizeOverride("font_size", 16);
+		_popupBuyPrice.AddThemeFontSizeOverride("font_size", 26);
 		_popupBuyPrice.AddThemeColorOverride("font_color", new Color("#FFC107"));
 
 		var btnRow = new HBoxContainer();
@@ -288,12 +304,12 @@ public partial class ShopUI : Control
 
 		_popupBuyBtn = new Button { Text = "Buy" };
 		_popupBuyBtn.CustomMinimumSize = new Vector2(100, 42);
-		_popupBuyBtn.AddThemeFontSizeOverride("font_size", 15);
+		_popupBuyBtn.AddThemeFontSizeOverride("font_size", 24);
 		_popupBuyBtn.Pressed += OnBuyFish;
 
 		var closeBtn = new Button { Text = "Close" };
 		closeBtn.CustomMinimumSize = new Vector2(100, 42);
-		closeBtn.AddThemeFontSizeOverride("font_size", 15);
+		closeBtn.AddThemeFontSizeOverride("font_size", 24);
 		closeBtn.Pressed += () => _popupOverlay.Hide();
 
 		btnRow.AddChild(_popupBuyBtn);

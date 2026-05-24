@@ -181,9 +181,10 @@ public partial class MainMapUI : Control
 
 		var info = new VBoxContainer();
 		var nameLabel = new Label { Text = pond.Name };
-		nameLabel.AddThemeFontSizeOverride("font_size", 18);
+		nameLabel.AddThemeFontSizeOverride("font_size", 28);
 		var fishCount = new Label { Text = $"Fish: {pond.Fishes.Count}" };
 		fishCount.AddThemeColorOverride("font_color", new Color("#666666"));
+		fishCount.AddThemeFontSizeOverride("font_size", 20);
 		info.AddChild(nameLabel);
 		info.AddChild(fishCount);
 
