@@ -58,6 +58,17 @@
   - `int GetUnlockCost()` — 获取下一个鱼塘解锁价格
   - `int GetMaxFishCount(int pondIndex)` — 获取鱼塘最大养鱼数
 
+### 2.6 IslandManager
+- 职责：岛屿发现、访问状态、船票消耗
+- 主要接口：
+  - `bool IsOnIsland` — 当前是否在岛屿上
+  - `string CurrentIslandId` — 当前访问的岛屿 ID
+  - `Dictionary GetIslandConfig(string id)` — 获取岛屿配置
+  - `Array GetAllIslands()` — 获取所有岛屿
+  - `bool ConsumeTicket(string id)` — 消耗船票
+  - `int GetTicketCount(string id)` — 查询持有船票数
+  - `void LeaveIsland()` — 离开岛屿，清除状态
+
 ### 2.5 FishManager
 - 职责：鱼的状态计算，成长/产籽逻辑
 - 主要接口：
@@ -114,15 +125,18 @@ Root (Node)
 ├── SaveManager (AutoLoad, Node)
 ├── EconomyManager (AutoLoad, Node)
 ├── PondManager (AutoLoad, Node)
+├── InventoryManager (AutoLoad, Node)
 ├── FishManager (AutoLoad, Node)
+├── IslandManager (AutoLoad, Node)
 └── MainScene (Control)
     ├── TopBar (Panel - 金币显示)
     ├── ContentArea (Control - 子场景加载)
-    │   ├── MainMap (地图视图)
+    │   ├── PondList (鱼塘列表/钓鱼视图)
     │   ├── PondDetail (鱼塘详情)
+    │   ├── Discover (岛屿发现)
     │   ├── Shop (商店)
     │   └── Inventory (背包)
-    └── BottomNav (Panel - 底部导航)
+    └── BottomNav (Panel - 底部导航：鱼塘/发现/商店/背包)
 ```
 
 ## 5. 状态流转图

@@ -112,6 +112,58 @@ offset_right = 380.0
 offset_bottom = 328.0
 text = "Cancel"
 
+[node name="FishingPanel" type="Control" parent="." unique_id=243625556]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IslandName" type="Label" parent="FishingPanel" unique_id=243625558]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 400.0
+offset_bottom = 48.0
+text = ""
+
+[node name="IslandFish" type="Label" parent="FishingPanel" unique_id=243625559]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 400.0
+offset_bottom = 80.0
+text = ""
+
+[node name="TicketCount" type="Label" parent="FishingPanel" unique_id=243625560]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 400.0
+offset_bottom = 112.0
+text = ""
+
+[node name="WaterArea" type="ColorRect" parent="FishingPanel" unique_id=243625561]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 388.0
+offset_bottom = 348.0
+color = Color(0.7, 0.85, 0.95, 1)
+mouse_filter = 1
+
+[node name="LeaveBtn" type="Button" parent="FishingPanel" unique_id=243625562]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 360.0
+offset_right = 160.0
+offset_bottom = 404.0
+text = "离开岛屿"
+
 [node name="BottomNav" type="ColorRect" parent="." unique_id=243625557]
 layout_mode = 1
 anchors_preset = 12
@@ -130,17 +182,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1918558223]
+[node name="PondBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1918558223]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Map"
+text = "鱼塘"
+
+[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=2988654321]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "发现"
 
 [node name="ShopBtn" type="Button" parent="BottomNav/NavButtons" unique_id=994330739]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Shop"
+text = "商店"
 
 [node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons" unique_id=161376656]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Inventory"
+text = "背包"

@@ -8,16 +8,12 @@ public class PondData
 {
     public string Id { get; set; }
     public string Name { get; set; }
-    public double Lat { get; set; }
-    public double Lon { get; set; }
     public List<FishData> Fishes { get; set; } = new();
 
-    public PondData(string name, double lat, double lon)
+    public PondData(string name)
     {
         Id = Guid.NewGuid().ToString();
         Name = name;
-        Lat = lat;
-        Lon = lon;
     }
 
     public Godot.Collections.Dictionary ToDict()
@@ -30,8 +26,6 @@ public class PondData
         {
             { "id", Id },
             { "name", Name },
-            { "lat", Lat },
-            { "lon", Lon },
             { "fishes", fishesArray }
         };
     }
@@ -39,9 +33,7 @@ public class PondData
     public static PondData FromDict(Godot.Collections.Dictionary dict)
     {
         var pond = new PondData(
-            name: dict["name"].AsString(),
-            lat: dict["lat"].AsDouble(),
-            lon: dict["lon"].AsDouble()
+            name: dict["name"].AsString()
         )
         {
             Id = dict.TryGetValue("id", out var id) ? id.AsString() : Guid.NewGuid().ToString()

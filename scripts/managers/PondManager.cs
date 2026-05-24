@@ -62,7 +62,7 @@ public partial class PondManager : Node
         return -1;
     }
 
-    public bool CreatePond(string name, double lat, double lon)
+    public bool CreatePond(string name)
     {
         if (!CanCreateMorePonds())
         {
@@ -81,7 +81,7 @@ public partial class PondManager : Node
             }
         }
 
-        var pond = new PondData(name, lat, lon);
+        var pond = new PondData(name);
         _ponds.Add(pond);
         GD.Print($"[PondManager] Pond created: {name} (id: {pond.Id})");
         return true;

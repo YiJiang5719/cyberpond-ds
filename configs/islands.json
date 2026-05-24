@@ -1,0 +1,36 @@
+{
+  "islands": [
+    {
+      "id": "green_lake",
+      "name": "翠湖",
+      "description": "平静的淡水湖，适合新手钓鱼",
+      "fish_types": ["common_carp"],
+      "ticket_id": "boat_ticket_island_1",
+      "background_color": "#B3E5FC"
+    },
+    {
+      "id": "golden_bay",
+      "name": "金鳞湾",
+      "description": "温暖的海湾，金鱼成群游弋",
+      "fish_types": ["common_carp", "goldfish"],
+      "ticket_id": "boat_ticket_island_2",
+      "background_color": "#FFF9C4"
+    },
+    {
+      "id": "koi_pond",
+      "name": "锦鲤潭",
+      "description": "幽深的潭水，锦鲤栖息之地",
+      "fish_types": ["goldfish", "koi"],
+      "ticket_id": "boat_ticket_island_3",
+      "background_color": "#FFCCBC"
+    },
+    {
+      "id": "dragon_abyss",
+      "name": "龙渊",
+      "description": "传说中的龙鱼栖息地，极为稀有",
+      "fish_types": ["koi", "arowana"],
+      "ticket_id": "boat_ticket_island_4",
+      "background_color": "#D1C4E9"
+    }
+  ]
+}

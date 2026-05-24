@@ -34,16 +34,42 @@ offset_left = 16.0
 offset_top = 84.0
 offset_right = 400.0
 offset_bottom = 116.0
-text = "Fish Shop"
+text = "Shop"
 
-[node name="FishScroll" type="ScrollContainer" parent="." unique_id=2140746742]
+[node name="FishHeader" type="Label" parent="." unique_id=3876543210]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 124.0
 offset_right = 400.0
-offset_bottom = 424.0
+offset_bottom = 148.0
+text = "— Fish Fry —"
+
+[node name="FishScroll" type="ScrollContainer" parent="." unique_id=2140746742]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 400.0
+offset_bottom = 260.0
 
 [node name="FishList" type="VBoxContainer" parent="FishScroll" unique_id=1521517924]
+layout_mode = 2
+
+[node name="TicketHeader" type="Label" parent="." unique_id=3876543211]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 268.0
+offset_right = 400.0
+offset_bottom = 292.0
+text = "— Boat Tickets —"
+
+[node name="TicketScroll" type="ScrollContainer" parent="." unique_id=3876543212]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 296.0
+offset_right = 400.0
+offset_bottom = 424.0
+
+[node name="TicketList" type="VBoxContainer" parent="TicketScroll" unique_id=3876543213]
 layout_mode = 2
 
 [node name="BottomNav" type="ColorRect" parent="." unique_id=199239117]
@@ -64,17 +90,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1599043173]
+[node name="PondBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1599043173]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Map"
+text = "鱼塘"
+
+[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=2988654322]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "发现"
 
 [node name="ShopBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1122091936]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Shop"
+text = "商店"
 
 [node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons" unique_id=57975797]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Inventory"
+text = "背包"

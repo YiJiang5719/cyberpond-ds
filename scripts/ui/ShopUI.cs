@@ -6,8 +6,11 @@ namespace CyberPond;
 public partial class ShopUI : Control
 {
 	private VBoxContainer _fishList;
+	private VBoxContainer _ticketList;
 	private Label _coinsLabel;
 	private Dictionary _fishTypes;
+	private Dictionary _shopConfig;
+	private Array _availableTickets;
 	private float _buyPriceMultiplier;
 	private float _sellPriceMultiplier;
 
@@ -27,16 +30,21 @@ public partial class ShopUI : Control
 	{
 		_coinsLabel = GetNode<Label>("CoinsLabel");
 		_fishList = GetNode<VBoxContainer>("FishScroll/FishList");
+		_ticketList = GetNode<VBoxContainer>("TicketScroll/TicketList");
 
-		GetNode<Button>("BottomNav/NavButtons/MapBtn").Pressed += () =>
+		// Bottom nav
+		GetNode<Button>("BottomNav/NavButtons/PondBtn").Pressed += () =>
 			GetTree().ChangeSceneToFile("res://scenes/main_map.tscn");
+		GetNode<Button>("BottomNav/NavButtons/DiscoverBtn").Pressed += () =>
+			GetTree().ChangeSceneToFile("res://scenes/discover.tscn");
 		GetNode<Button>("BottomNav/NavButtons/InventoryBtn").Pressed += () =>
 			GetTree().ChangeSceneToFile("res://scenes/inventory.tscn");
 
 		_fishTypes = LoadConfig("res://configs/fish_types.json");
-		var shopConfig = LoadConfig("res://configs/shop_config.json");
-		_buyPriceMultiplier = shopConfig["buy_price_multiplier"].AsSingle();
-		_sellPriceMultiplier = shopConfig["sell_price_multiplier"].AsSingle();
+		_shopConfig = LoadConfig("res://configs/shop_config.json");
+		_buyPriceMultiplier = _shopConfig["buy_price_multiplier"].AsSingle();
+		_sellPriceMultiplier = _shopConfig["sell_price_multiplier"].AsSingle();
+		_availableTickets = (Array)_shopConfig["available_tickets"];
 
 		CreatePopup();
 		Refresh();
@@ -57,7 +65,15 @@ public partial class ShopUI : Control
 			GD.Print($"[ShopUI] Creating card for: {fishDef["name"]}");
 			_fishList.AddChild(CreateFishCard(fishDef));
 		}
-		GD.Print($"[ShopUI] Done. FishList has {_fishList.GetChildCount()} children.");
+		foreach (var child in _ticketList.GetChildren())
+			child.QueueFree();
+
+		foreach (Dictionary ticket in _availableTickets)
+		{
+			_ticketList.AddChild(CreateTicketCard(ticket));
+		}
+
+		GD.Print($"[ShopUI] Done. Fish: {_fishList.GetChildCount()}, Tickets: {_ticketList.GetChildCount()}");
 	}
 
 	private TextureRect CreateFishSprite(string fishType)
@@ -141,6 +157,74 @@ public partial class ShopUI : Control
 		card.Pressed += () => ShowPopup(fishType, price);
 
 		return card;
+	}
+
+	private Control CreateTicketCard(Dictionary ticketDef)
+	{
+		var card = new Button();
+		card.SizeFlagsHorizontal = Control.SizeFlags.Fill;
+		card.CustomMinimumSize = new Vector2(0, 64);
+		card.Flat = true;
+		card.AddThemeStyleboxOverride("normal", new StyleBoxFlat
+		{
+			BgColor = new Color("#FFFFFF"),
+			CornerRadiusTopLeft = 8,
+			CornerRadiusTopRight = 8,
+			CornerRadiusBottomLeft = 8,
+			CornerRadiusBottomRight = 8,
+			ContentMarginLeft = 16,
+			ContentMarginRight = 16,
+			ContentMarginTop = 10,
+			ContentMarginBottom = 10
+		});
+
+		var hbox = new HBoxContainer();
+		hbox.MouseFilter = MouseFilterEnum.Ignore;
+		hbox.AddThemeConstantOverride("separation", 12);
+
+		var info = new VBoxContainer();
+		info.MouseFilter = MouseFilterEnum.Ignore;
+
+		var nameLabel = new Label { Text = ticketDef["name"].AsString() };
+		nameLabel.AddThemeFontSizeOverride("font_size", 16);
+
+		int price = ticketDef["price"].AsInt32();
+		var priceLabel = new Label { Text = price == 0 ? "Free" : $"Price: {price} coins" };
+		priceLabel.AddThemeColorOverride("font_color", new Color(price == 0 ? "#66BB6A" : "#FFC107"));
+
+		info.AddChild(nameLabel);
+		info.AddChild(priceLabel);
+
+		hbox.AddChild(info);
+		hbox.AddChild(new Control { SizeFlagsHorizontal = Control.SizeFlags.Expand, MouseFilter = MouseFilterEnum.Ignore });
+
+		var buyBtn = new Button { Text = price == 0 ? "Get" : "Buy" };
+		buyBtn.CustomMinimumSize = new Vector2(70, 36);
+		buyBtn.AddThemeFontSizeOverride("font_size", 14);
+
+		var ticketId = ticketDef["id"].AsString();
+		buyBtn.Pressed += () => OnBuyTicket(ticketId, price);
+		hbox.AddChild(buyBtn);
+
+		card.AddChild(hbox);
+		return card;
+	}
+
+	private void OnBuyTicket(string ticketId, int price)
+	{
+		var economy = GetNode<EconomyManager>("/root/EconomyManager");
+		var inventory = GetNode<InventoryManager>("/root/InventoryManager");
+
+		if (!economy.SpendCoins(price))
+		{
+			GD.Print("[ShopUI] Not enough coins for ticket.");
+			return;
+		}
+
+		inventory.AddItem(ticketId);
+		GetNode<SaveManager>("/root/SaveManager").SaveGame();
+		Refresh();
+		GD.Print($"[ShopUI] Purchased ticket: {ticketId}");
 	}
 
 	private void CreatePopup()

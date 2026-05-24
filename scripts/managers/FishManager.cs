@@ -120,6 +120,11 @@ public partial class FishManager : Node
 		return "";
 	}
 
+	public Dictionary GetFishParams(string typeKey)
+	{
+		return (Dictionary)_fishConfig[typeKey];
+	}
+
 	public string GetGrowthRemaining(FishData fish)
 	{
 		if (fish.IsAdult) return "Adult";

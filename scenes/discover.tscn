@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://discover001"]
+
+[ext_resource type="Script" uid="uid://b5hi6t0xljt6t" path="res://scripts/ui/DiscoverUI.cs" id="1_script"]
+
+[node name="Discover" type="Control" unique_id=3098765432]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=3098765433]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89, 0.95, 0.99, 1)
+
+[node name="CoinsLabel" type="Label" parent="." unique_id=3098765434]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 400.0
+offset_bottom = 76.0
+text = "Coins: 0"
+
+[node name="TitleLabel" type="Label" parent="." unique_id=3098765435]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 84.0
+offset_right = 400.0
+offset_bottom = 116.0
+text = "发现岛屿"
+
+[node name="IslandScroll" type="ScrollContainer" parent="." unique_id=3098765436]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 124.0
+offset_right = 400.0
+offset_bottom = 424.0
+
+[node name="IslandList" type="VBoxContainer" parent="IslandScroll" unique_id=3098765437]
+layout_mode = 2
+
+[node name="IslandDetail" type="ColorRect" parent="." unique_id=3098765438]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89, 0.95, 0.99, 0.98)
+
+[node name="DetailBackBtn" type="Button" parent="IslandDetail" unique_id=3098765439]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 80.0
+offset_bottom = 124.0
+text = "< 返回"
+
+[node name="DetailName" type="Label" parent="IslandDetail" unique_id=3098765440]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 88.0
+offset_right = 400.0
+offset_bottom = 124.0
+text = ""
+
+[node name="DetailDesc" type="Label" parent="IslandDetail" unique_id=3098765441]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 140.0
+offset_right = 400.0
+offset_bottom = 168.0
+text = ""
+
+[node name="DetailFishLabel" type="Label" parent="IslandDetail" unique_id=3098765442]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 180.0
+offset_right = 400.0
+offset_bottom = 204.0
+text = "可钓鱼类："
+
+[node name="DetailTicketLabel" type="Label" parent="IslandDetail" unique_id=3098765443]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 216.0
+offset_right = 400.0
+offset_bottom = 244.0
+text = "持有船票：0"
+
+[node name="DetailVisitBtn" type="Button" parent="IslandDetail" unique_id=3098765444]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 260.0
+offset_right = 200.0
+offset_bottom = 308.0
+text = "前往钓鱼"
+
+[node name="BottomNav" type="ColorRect" parent="." unique_id=3098765445]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NavButtons" type="HBoxContainer" parent="BottomNav" unique_id=3098765446]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PondBtn" type="Button" parent="BottomNav/NavButtons" unique_id=3098765447]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "鱼塘"
+
+[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=3098765448]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "发现"
+
+[node name="ShopBtn" type="Button" parent="BottomNav/NavButtons" unique_id=3098765449]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "商店"
+
+[node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons" unique_id=3098765450]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "背包"

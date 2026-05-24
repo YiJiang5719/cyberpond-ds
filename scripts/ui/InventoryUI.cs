@@ -6,11 +6,9 @@ public partial class InventoryUI : Control
 {
 	private VBoxContainer _fryList;
 	private VBoxContainer _roeList;
+	private VBoxContainer _itemsList;
 	private Label _coinsLabel;
 	private Label _slotLabel;
-	private Button _mapBtn;
-	private Button _shopBtn;
-	private Button _inventoryBtn;
 
 	public override void _Ready()
 	{
@@ -18,13 +16,14 @@ public partial class InventoryUI : Control
 		_slotLabel = GetNode<Label>("SlotLabel");
 		_fryList = GetNode<VBoxContainer>("FryScroll/FryList");
 		_roeList = GetNode<VBoxContainer>("RoeScroll/RoeList");
+		_itemsList = GetNode<VBoxContainer>("ItemsScroll/ItemsList");
 
-		_mapBtn = GetNode<Button>("BottomNav/NavButtons/MapBtn");
-		_shopBtn = GetNode<Button>("BottomNav/NavButtons/ShopBtn");
-		_inventoryBtn = GetNode<Button>("BottomNav/NavButtons/InventoryBtn");
-
-		_mapBtn.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/main_map.tscn");
-		_shopBtn.Pressed += () => GetTree().ChangeSceneToFile("res://scenes/shop.tscn");
+		GetNode<Button>("BottomNav/NavButtons/PondBtn").Pressed += () =>
+			GetTree().ChangeSceneToFile("res://scenes/main_map.tscn");
+		GetNode<Button>("BottomNav/NavButtons/DiscoverBtn").Pressed += () =>
+			GetTree().ChangeSceneToFile("res://scenes/discover.tscn");
+		GetNode<Button>("BottomNav/NavButtons/ShopBtn").Pressed += () =>
+			GetTree().ChangeSceneToFile("res://scenes/shop.tscn");
 
 		GetNode<Button>("UnlockSlotBtn").Pressed += OnUnlockSlot;
 
@@ -43,6 +42,8 @@ public partial class InventoryUI : Control
 			child.QueueFree();
 		foreach (var child in _roeList.GetChildren())
 			child.QueueFree();
+		foreach (var child in _itemsList.GetChildren())
+			child.QueueFree();
 
 		foreach (var kv in inventory.GetAllFry())
 		{
@@ -54,6 +55,12 @@ public partial class InventoryUI : Control
 		{
 			if (kv.Value <= 0) continue;
 			_roeList.AddChild(CreateRoeEntry(kv.Key, kv.Value));
+		}
+
+		foreach (var kv in inventory.GetAllItems())
+		{
+			if (kv.Value <= 0) continue;
+			_itemsList.AddChild(CreateItemEntry(kv.Key, kv.Value));
 		}
 	}
 
@@ -137,6 +144,62 @@ public partial class InventoryUI : Control
 
 		panel.AddChild(hbox);
 		return panel;
+	}
+
+	private Control CreateItemEntry(string itemId, int count)
+	{
+		var panel = new PanelContainer();
+		panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+		{
+			BgColor = new Color("#FFFFFF"),
+			CornerRadiusTopLeft = 6,
+			CornerRadiusTopRight = 6,
+			CornerRadiusBottomLeft = 6,
+			CornerRadiusBottomRight = 6,
+			ContentMarginLeft = 12,
+			ContentMarginRight = 12,
+			ContentMarginTop = 8,
+			ContentMarginBottom = 8
+		});
+
+		var hbox = new HBoxContainer();
+		hbox.AddThemeConstantOverride("separation", 8);
+
+		var nameLabel = new Label { Text = $"{GetItemDisplayName(itemId)} x{count}" };
+		hbox.AddChild(nameLabel);
+		hbox.AddChild(new Control { SizeFlagsHorizontal = Control.SizeFlags.Expand });
+
+		panel.AddChild(hbox);
+		return panel;
+	}
+
+	private static string GetItemDisplayName(string itemId)
+	{
+		// Try to resolve from islands.json ticket_id
+		var config = LoadConfigStatic("res://configs/islands.json");
+		var islands = (Godot.Collections.Array)config["islands"];
+		foreach (Godot.Collections.Dictionary island in islands)
+		{
+			if (island["ticket_id"].AsString() == itemId)
+				return $"船票 — {island["name"]}";
+		}
+		// Fallback for shop-config names
+		var shopConfig = LoadConfigStatic("res://configs/shop_config.json");
+		var tickets = (Godot.Collections.Array)shopConfig["available_tickets"];
+		foreach (Godot.Collections.Dictionary ticket in tickets)
+		{
+			if (ticket["id"].AsString() == itemId)
+				return ticket["name"].AsString();
+		}
+		return itemId;
+	}
+
+	private static Godot.Collections.Dictionary LoadConfigStatic(string path)
+	{
+		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
+		var json = new Json();
+		json.Parse(file.GetAsText());
+		return json.Data.AsGodotDictionary();
 	}
 
 	private void OnSellRoe(string fishType)

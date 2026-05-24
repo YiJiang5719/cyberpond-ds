@@ -7,8 +7,6 @@
 | 引擎 | Godot 4.6（4.x 系列最新稳定版） |
 | 语言 | C#（使用 Godot .NET 版本） |
 | 渲染 | GL Compatibility（兼容移动端 OpenGL ES） |
-| 地图 | OpenStreetMap 瓦片图（HTTP 请求加载） |
-| 定位 | Android GPS（通过 Godot 引擎接口获取） |
 | 存储 | 本地 JSON 文件写入（`user://` 目录） |
 | UI | Godot Control 节点 + 自定义主题 |
 
@@ -21,13 +19,15 @@ CyberPond/
 │   ├── pond_config.json
 │   ├── shop_config.json
 │   ├── inventory_config.json
-│   └── game_config.json
+│   ├── game_config.json
+│   └── islands.json
 ├── scripts/                  # C# 源码
 │   ├── managers/             # 管理器（单例，控制核心逻辑）
 │   │   ├── GameManager.cs    # 游戏主入口 + 游戏状态
 │   │   ├── SaveManager.cs    # 存档读写
 │   │   ├── EconomyManager.cs # 金币经济
 │   │   ├── PondManager.cs    # 鱼塘操作
+│   │   ├── IslandManager.cs  # 岛屿发现与访问状态
 │   │   └── FishManager.cs    # 鱼类养成
 │   ├── data/                 # 数据模型（纯数据结构）
 │   │   ├── FishData.cs
@@ -38,16 +38,14 @@ CyberPond/
 │   │   ├── PondDetailUI.cs
 │   │   ├── ShopUI.cs
 │   │   ├── InventoryUI.cs
-│   │   └── CreatePondUI.cs
-│   └── map/                  # 地图相关
-│       ├── MapView.cs        # 地图显示控制
-│       └── GpsHandler.cs     # GPS 定位处理
+│   │   ├── DiscoverUI.cs
+│   │   └── FishingGame.cs
 ├── scenes/                   # Godot 场景文件 (.tscn)
 │   ├── main_map.tscn
 │   ├── pond_detail.tscn
 │   ├── shop.tscn
 │   ├── inventory.tscn
-│   └── create_pond.tscn
+│   └── discover.tscn
 ├── assets/                   # 资源文件
 │   ├── fish/                 # 鱼类美术（PNG/SVG）
 │   ├── ui/                   # UI 素材（按钮、面板、图标）

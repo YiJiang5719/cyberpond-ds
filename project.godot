@@ -23,6 +23,7 @@ EconomyManager="*res://scripts/managers/EconomyManager.cs"
 PondManager="*res://scripts/managers/PondManager.cs"
 InventoryManager="*res://scripts/managers/InventoryManager.cs"
 FishManager="*res://scripts/managers/FishManager.cs"
+IslandManager="*res://scripts/managers/IslandManager.cs"
 
 [dotnet]
 

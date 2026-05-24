@@ -67,17 +67,35 @@ layout_mode = 0
 offset_left = 16.0
 offset_top = 292.0
 offset_right = 400.0
-offset_bottom = 384.0
+offset_bottom = 352.0
 
 [node name="RoeList" type="VBoxContainer" parent="RoeScroll" unique_id=492846272]
+layout_mode = 2
+
+[node name="ItemsHeader" type="Label" parent="." unique_id=3912456781]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 360.0
+offset_right = 400.0
+offset_bottom = 384.0
+text = "Items"
+
+[node name="ItemsScroll" type="ScrollContainer" parent="." unique_id=3912456782]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 388.0
+offset_right = 400.0
+offset_bottom = 420.0
+
+[node name="ItemsList" type="VBoxContainer" parent="ItemsScroll" unique_id=3912456783]
 layout_mode = 2
 
 [node name="UnlockSlotBtn" type="Button" parent="." unique_id=1347112378]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 396.0
+offset_top = 430.0
 offset_right = 200.0
-offset_bottom = 430.0
+offset_bottom = 464.0
 text = "Unlock Slot"
 
 [node name="BottomNav" type="ColorRect" parent="." unique_id=737145166]
@@ -98,17 +116,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1076825842]
+[node name="PondBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1076825842]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Map"
+text = "鱼塘"
+
+[node name="DiscoverBtn" type="Button" parent="BottomNav/NavButtons" unique_id=2988654323]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "发现"
 
 [node name="ShopBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1758813146]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Shop"
+text = "商店"
 
 [node name="InventoryBtn" type="Button" parent="BottomNav/NavButtons" unique_id=1838518337]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Inventory"
+text = "背包"

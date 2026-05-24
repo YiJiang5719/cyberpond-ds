@@ -8,7 +8,10 @@
     "daily_roe": 2,
     "roe_price": 30,
     "color": "#FF6B6B",
-    "sprite": "res://assets/fish/fish_0.png"
+    "sprite": "res://assets/fish/fish_0.png",
+    "fishing_speed": 80,
+    "fishing_zone_ratio": 0.4,
+    "fishing_behavior": "smooth"
   },
   "goldfish": {
     "id": "goldfish",
@@ -19,7 +22,10 @@
     "daily_roe": 4,
     "roe_price": 50,
     "color": "#FFD700",
-    "sprite": "res://assets/fish/fish_1.png"
+    "sprite": "res://assets/fish/fish_1.png",
+    "fishing_speed": 120,
+    "fishing_zone_ratio": 0.35,
+    "fishing_behavior": "smooth"
   },
   "koi": {
     "id": "koi",
@@ -30,7 +36,10 @@
     "daily_roe": 6,
     "roe_price": 100,
     "color": "#FF8C42",
-    "sprite": "res://assets/fish/fish_2.png"
+    "sprite": "res://assets/fish/fish_2.png",
+    "fishing_speed": 150,
+    "fishing_zone_ratio": 0.3,
+    "fishing_behavior": "erratic"
   },
   "arowana": {
     "id": "arowana",
@@ -41,6 +50,9 @@
     "daily_roe": 8,
     "roe_price": 250,
     "color": "#FFD700",
-    "sprite": "res://assets/fish/fish_3.png"
+    "sprite": "res://assets/fish/fish_3.png",
+    "fishing_speed": 200,
+    "fishing_zone_ratio": 0.25,
+    "fishing_behavior": "erratic"
   }
 }

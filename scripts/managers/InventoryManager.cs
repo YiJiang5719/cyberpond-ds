@@ -3,13 +3,14 @@ using Godot;
 
 namespace CyberPond;
 
-/// Manages inventory state: fry, roe, and slot unlocks.
+/// Manages inventory state: fry, roe, items, and slot unlocks.
 public partial class InventoryManager : Node
 {
 	private const string ConfigPath = "res://configs/inventory_config.json";
 
 	private Dictionary<string, int> _fry = new();
 	private Dictionary<string, int> _roe = new();
+	private Dictionary<string, int> _items = new();
 	private int _unlockedSlots = 10;
 	private int _maxSlots = 30;
 	private int _slotUnlockCost = 100;
@@ -33,8 +34,12 @@ public partial class InventoryManager : Node
 	public int GetRoeCount(string fishType) =>
 		_roe.TryGetValue(fishType, out var count) ? count : 0;
 
+	public int GetItemCount(string itemId) =>
+		_items.TryGetValue(itemId, out var count) ? count : 0;
+
 	public Dictionary<string, int> GetAllFry() => new(_fry);
 	public Dictionary<string, int> GetAllRoe() => new(_roe);
+	public Dictionary<string, int> GetAllItems() => new(_items);
 
 	public int TotalItemTypes()
 	{
@@ -42,6 +47,8 @@ public partial class InventoryManager : Node
 		foreach (var v in _fry.Values)
 			if (v > 0) count++;
 		foreach (var v in _roe.Values)
+			if (v > 0) count++;
+		foreach (var v in _items.Values)
 			if (v > 0) count++;
 		return count;
 	}
@@ -78,6 +85,22 @@ public partial class InventoryManager : Node
 		return true;
 	}
 
+	public void AddItem(string itemId, int count = 1)
+	{
+		_items[itemId] = GetItemCount(itemId) + count;
+		GD.Print($"[InventoryManager] Added {count} {itemId}. Total: {_items[itemId]}");
+	}
+
+	public bool RemoveItem(string itemId, int count = 1)
+	{
+		int current = GetItemCount(itemId);
+		if (current < count) return false;
+		_items[itemId] = current - count;
+		if (_items[itemId] == 0)
+			_items.Remove(itemId);
+		return true;
+	}
+
 	public bool UnlockSlot()
 	{
 		if (_unlockedSlots >= _maxSlots)
@@ -94,6 +117,7 @@ public partial class InventoryManager : Node
 	{
 		_fry.Clear();
 		_roe.Clear();
+		_items.Clear();
 		_unlockedSlots = 10;
 		GD.Print("[InventoryManager] All inventory cleared.");
 	}
@@ -108,11 +132,16 @@ public partial class InventoryManager : Node
 		foreach (var kv in _roe)
 			roeDict[kv.Key] = kv.Value;
 
+		var itemsDict = new Godot.Collections.Dictionary();
+		foreach (var kv in _items)
+			itemsDict[kv.Key] = kv.Value;
+
 		return new Godot.Collections.Dictionary
 		{
 			{ "unlocked_slots", _unlockedSlots },
 			{ "fry", fryDict },
-			{ "roe", roeDict }
+			{ "roe", roeDict },
+			{ "items", itemsDict }
 		};
 	}
 
@@ -121,6 +150,7 @@ public partial class InventoryManager : Node
 		_unlockedSlots = dict["unlocked_slots"].AsInt32();
 		_fry.Clear();
 		_roe.Clear();
+		_items.Clear();
 
 		var fryDict = (Godot.Collections.Dictionary)dict["fry"];
 		foreach (var key in fryDict.Keys)
@@ -130,9 +160,15 @@ public partial class InventoryManager : Node
 		foreach (var key in roeDict.Keys)
 			_roe[key.ToString()] = roeDict[key].AsInt32();
 
-		GD.Print($"[InventoryManager] Restored. Slots: {_unlockedSlots}, Fry types: {_fry.Count}, Roe types: {_roe.Count}");
-	}
+		if (dict.TryGetValue("items", out var itemsVal))
+		{
+			var itemsDict = (Godot.Collections.Dictionary)itemsVal;
+			foreach (var key in itemsDict.Keys)
+				_items[key.ToString()] = itemsDict[key].AsInt32();
+		}
 
+		GD.Print($"[InventoryManager] Restored. Slots: {_unlockedSlots}, Fry: {_fry.Count}, Roe: {_roe.Count}, Items: {_items.Count}");
+	}
 	private Godot.Collections.Dictionary LoadConfig()
 	{
 		using var file = FileAccess.Open(ConfigPath, FileAccess.ModeFlags.Read);
